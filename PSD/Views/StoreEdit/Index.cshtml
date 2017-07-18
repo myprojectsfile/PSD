@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "ویرایش مشخصات قبض انبار";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-3">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">سریال قبض انبار</span>
+            <input type="text" class="form-control" id="storeBLSerial" style="direction:ltr;">
+        </div>
+    </div>
+    <div class="col-lg-1">
+        <button type="button" id="btnSearchStoreBL" class="btn btn-primary btn-sm">جستجو</button>
+    </div>
+    <div class="col-lg-2">
+        <div id="errMsg"></div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table text-right" id="bookingTable">
+            <tr>
+                <th>بوکینگ</th>
+                <th>سریال</th>
+                <th>ردیف</th>
+                <th>آیتم</th>
+                <th>تعداد قبض</th>
+                <th>وضعیت</th>
+                <th>وزن ناخالص</th>
+                <th>نام خریدار</th>
+                <th>سریال قبض قبلی</th>
+                <th>تاریخ صدور</th>
+                <th>تاریخ تخلیه</th>
+                <th>توضیحات</th>
+            </tr>
+            <tr id="storeBLRow"></tr>
+        </table>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var finalStoreBlId = -1;
+            $("#btnSearchStoreBL").on("click", function () {
+                loadStoreBL();
+            })
+        });
+
+        function loadStoreBL() {
+            var storeBLSerial = $("#storeBLSerial").val();
+            $.ajax({
+                dataType: "json",
+                url: "/api/Store/GetStoreBL/" + storeBLSerial,
+                success: function (data) {
+                    var storeBLRowContent =
+                    "<td>" + data.BookingNo + "</td>" +
+                    "<td>" + data.Serial + "</td>" +
+                    "<td>" + data.Row + "</td>" +
+                    "<td>" + data.ItemNo + "</td>" +
+                    "<td>" + data.StoreBLNo + "</td>" +
+                    "<td>" + data.Status + "</td>" +
+                    "<td>" + data.GrossWeight + "</td>" +
+                    "<td>" + data.BuyerName + "</td>" +
+                    "<td>" + data.ExStoreBLSerial + "</td>" +
+                    "<td>" + data.IssueDate + "</td>" +
+                    "<td>" + data.DischargeDate + "</td>" +
+                    "<td>" + data.Comments + "</td>";
+                    //"<td>" + "<select id=\"statusOption\" style=\"width:40px;\"><option value=\"A\">A</option><option value=\"C\">C</option><option value=\"O\">O</option>" + "</td>";
+                    finalStoreBlId = data.Id;
+                    $("#storeBLRow").html(storeBLRowContent);
+                    //$("#editSeciton").show(oreBLRowContent);
+                    //$("#status").val(data.S);
+                    $("#errMsg").html("");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    if (xhr.status == 404) {
+                        $("#errMsg").html("هیچ قبض انباری با این سریال پیدا نشد");
+                        //$("#editSeciton").hide();
+                        $("#storeBLRow").html("");
+                    }
+                }
+            });
+        }
+    </script>
+}

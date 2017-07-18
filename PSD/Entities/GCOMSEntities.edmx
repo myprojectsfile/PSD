@@ -1,0 +1,1009 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GCOMS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2000" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BL_HEAD">
+          <Key>
+            <PropertyRef Name="BL_HEADID" />
+          </Key>
+          <Property Name="BL_HEADID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MANIFESTID" Type="int" Nullable="false" />
+          <Property Name="BL_NUMBER" Type="varchar" MaxLength="20" />
+          <Property Name="TRAFFICID" Type="int" />
+          <Property Name="BL_CONT" Type="bit" />
+          <Property Name="BL_TYPE" Type="char" MaxLength="1" />
+          <Property Name="CSGNEE_NAM" Type="nvarchar" MaxLength="500" />
+          <Property Name="CSGNEE_ADD" Type="nvarchar" MaxLength="150" />
+          <Property Name="CSGNEE_POSTALCODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CSGNEE_CITY" Type="int" />
+          <Property Name="CSGNEE_FAX" Type="nvarchar" MaxLength="50" />
+          <Property Name="CSGNEE_EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="CSGNOR_NAM" Type="nvarchar" MaxLength="500" />
+          <Property Name="CSGNOR_ADD" Type="nvarchar" MaxLength="150" />
+          <Property Name="CSGNOR_POSTALCODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CSGNOR_CITY" Type="int" />
+          <Property Name="CSGNOR_FAX" Type="nvarchar" MaxLength="50" />
+          <Property Name="CSGNOR_EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="NOTIFY_NAM" Type="nvarchar" MaxLength="500" />
+          <Property Name="NOTIFY_ADD" Type="nvarchar" MaxLength="150" />
+          <Property Name="NOTIFY_POSTALCODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="NOTIFY_CITY" Type="int" />
+          <Property Name="NOTIFY_FAX" Type="nvarchar" MaxLength="50" />
+          <Property Name="NOTIFY_EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="CONSIGNEEID" Type="int" />
+          <Property Name="PL_LOADING" Type="int" />
+          <Property Name="PL_DISCHAR" Type="int" />
+          <Property Name="PL_DESTINA" Type="int" />
+          <Property Name="GOODS_ORIG" Type="int" />
+          <Property Name="FORWARDERID" Type="int" />
+          <Property Name="CLEARERID" Type="int" />
+          <Property Name="OPERATORID" Type="int" />
+          <Property Name="TERMINALID" Type="int" />
+          <Property Name="STOP_STATUS" Type="char" MaxLength="1" />
+          <Property Name="STOP_DATE" Type="smalldatetime" />
+          <Property Name="STOP_USERID" Type="int" />
+          <Property Name="STOP_MOTIVEID" Type="int" />
+          <Property Name="STOP_COMMENTS" Type="nvarchar" MaxLength="250" />
+          <Property Name="DISCHARGED" Type="smalldatetime" />
+          <Property Name="CREADATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="UPDADATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="UID_USES" Type="int" Nullable="false" />
+          <Property Name="VER_N" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="FREE_ZONE" Type="bit" />
+        </EntityType>
+        <EntityType Name="BL_ITEM">
+          <Key>
+            <PropertyRef Name="BL_ITEMID" />
+          </Key>
+          <Property Name="BL_ITEMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BL_HEADID" Type="int" Nullable="false" />
+          <Property Name="ITEM_NB" Type="int" Nullable="false" />
+          <Property Name="CUSTOMCLRNB" Type="char" MaxLength="30" />
+          <Property Name="CUSTOM_HEADID" Type="int" />
+          <Property Name="CUSTOM_ITEMID" Type="int" />
+          <Property Name="GOODS_DESC" Type="nvarchar" MaxLength="3000" />
+          <Property Name="NET_WEIGHT" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="GRS_WEIGHT" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="VOLUME" Type="int" />
+          <Property Name="PACK_CODEID" Type="int" />
+          <Property Name="PACK_NB" Type="int" />
+          <Property Name="COMMODITYID" Type="int" />
+          <Property Name="DG_CLASSID" Type="int" />
+          <Property Name="CARGO_TYPEID" Type="int" />
+          <Property Name="SHIP_MK" Type="nvarchar" MaxLength="175" />
+          <Property Name="CUSTOMCLRDATE" Type="smalldatetime" />
+          <Property Name="CUSTOMNB" Type="char" MaxLength="30" />
+          <Property Name="SERIALNB" Type="int" />
+          <Property Name="FREE_ZONE" Type="bit" />
+          <Property Name="UNDG_CODE" Type="char" MaxLength="4" />
+          <Property Name="UID_USES" Type="int" />
+          <Property Name="VER_N" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="CREADATE" Type="smalldatetime" />
+          <Property Name="UPDADATE" Type="smalldatetime" />
+          <Property Name="Tag" Type="nvarchar" MaxLength="2048" />
+          <Property Name="flag" Type="int" />
+          <Property Name="Date_Stop" Type="smalldatetime" />
+          <Property Name="Desc_Stop" Type="nvarchar" MaxLength="2048" />
+        </EntityType>
+        <EntityType Name="BOOKING">
+          <Key>
+            <PropertyRef Name="BOOKINGID" />
+          </Key>
+          <Property Name="BOOKINGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOOKING" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="VESSELID" Type="int" Nullable="false" />
+          <Property Name="BOOKINGTYP" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="SUBM_DATE" Type="smalldatetime" />
+          <Property Name="SHIPAGENTID" Type="int" />
+          <Property Name="CHARTAGENTID" Type="int" />
+          <Property Name="SH_LINEID" Type="int" />
+          <Property Name="ETA_DATE" Type="smalldatetime" />
+          <Property Name="ETD_DATE" Type="smalldatetime" />
+          <Property Name="DRAFT_IN" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="DRAFT_OUT" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="NEXT_PORTID" Type="int" />
+          <Property Name="LAST_PORTID" Type="int" />
+          <Property Name="COMMODITYID" Type="int" />
+          <Property Name="D_LIQBULK" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_LIQBULK" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_DRYBULK" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_DRYBULK" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_GALCARGO" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_GALCARGO" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_20NB_E" Type="smallint" />
+          <Property Name="D_20NB_F" Type="smallint" />
+          <Property Name="L_20NB_E" Type="smallint" />
+          <Property Name="L_20NB_F" Type="smallint" />
+          <Property Name="D_20TN_E" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_20TN_F" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_20TN_E" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_20TN_F" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_40NB_E" Type="smallint" />
+          <Property Name="D_40NB_F" Type="smallint" />
+          <Property Name="L_40NB_E" Type="smallint" />
+          <Property Name="L_40NB_F" Type="smallint" />
+          <Property Name="D_40TN_E" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_40TN_F" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_40TN_E" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_40TN_F" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_VEHNB" Type="smallint" />
+          <Property Name="L_VEHNB" Type="smallint" />
+          <Property Name="D_VEHTN" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_VEHTN" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_LIVNB" Type="smallint" />
+          <Property Name="L_LIVNB" Type="smallint" />
+          <Property Name="D_LIVTN" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_LIVTN" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_HVLNB" Type="smallint" />
+          <Property Name="L_HVLNB" Type="smallint" />
+          <Property Name="D_HVLMAXTN" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="L_HVLMAXTN" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="D_GANGS" Type="smallint" />
+          <Property Name="L_GANGS" Type="smallint" />
+          <Property Name="D_HOOKS" Type="smallint" />
+          <Property Name="L_HOOKS" Type="smallint" />
+          <Property Name="CONT_FULL" Type="bit" />
+          <Property Name="CONT_GEAR" Type="bit" />
+          <Property Name="RORORAMP" Type="varchar" MaxLength="20" />
+          <Property Name="RORONEED" Type="varchar" MaxLength="20" />
+          <Property Name="VOYAGE_A" Type="char" MaxLength="15" />
+          <Property Name="VOYAGE_D" Type="char" MaxLength="15" />
+          <Property Name="UID_USES" Type="int" Nullable="false" />
+          <Property Name="VER_N" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CREADATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="UPDADATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="CARGO_TYPEID" Type="int" />
+          <Property Name="HANDLING_DIRECT" Type="bit" />
+          <Property Name="HANDLING_INDIRECT" Type="bit" />
+          <Property Name="ISSC_DATE" Type="smalldatetime" />
+          <Property Name="ISSC_NB" Type="varchar" MaxLength="25" />
+          <Property Name="ARVTYPEID" Type="int" />
+          <Property Name="ONECARGOCONSIGNEE" Type="bit" />
+          <Property Name="CONSIGNEEID" Type="int" />
+          <Property Name="CONTDISCHARGEID" Type="int" />
+          <Property Name="CONTTALLYID" Type="int" />
+          <Property Name="PORTLOCAID" Type="int" />
+          <Property Name="BERTHSIDEID" Type="int" />
+          <Property Name="CONTDRAFTSURVEYID" Type="int" />
+          <Property Name="TALLYID" Type="int" />
+          <Property Name="VESSEL2ID" Type="int" />
+        </EntityType>
+        <EntityType Name="MANIFEST">
+          <Key>
+            <PropertyRef Name="MANIFESTID" />
+          </Key>
+          <Property Name="MANIFESTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOOKINGID" Type="int" Nullable="false" />
+          <Property Name="SH_LINEID" Type="int" Nullable="false" />
+          <Property Name="MAN_STATUS" Type="char" MaxLength="1" />
+          <Property Name="CREADATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="UID_USES" Type="int" Nullable="false" />
+          <Property Name="VER_N" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="UPDADATE" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SH_AGENT">
+          <Key>
+            <PropertyRef Name="SHIPAGENTID" />
+          </Key>
+          <Property Name="SHIPAGENTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SHIPAGENT" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="LONGNAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="120" />
+          <Property Name="EXPIRYDATE" Type="smalldatetime" />
+          <Property Name="UID_USES" Type="int" Nullable="false" />
+          <Property Name="VER_N" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CREADATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="UPDADATE" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STORREBL">
+          <Key>
+            <PropertyRef Name="STORREBLID" />
+          </Key>
+          <Property Name="STORREBLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STORREBL_HeadID" Type="int" />
+          <Property Name="BL_ITEMID" Type="int" />
+          <Property Name="ISSUE_DATE" Type="smalldatetime" />
+          <Property Name="SERIAL" Type="char" MaxLength="17" />
+          <Property Name="DISCHARGE_DATE" Type="smalldatetime" />
+          <Property Name="PACK_NB" Type="int" />
+          <Property Name="GRS_WEIGHT" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="LCNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="ISSUEING_BANK" Type="nvarchar" MaxLength="100" />
+          <Property Name="COMMENTS" Type="nvarchar" MaxLength="500" />
+          <Property Name="CLEARER" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRERSTORBL_ID" Type="nvarchar" MaxLength="11" />
+          <Property Name="BUYER_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALEDESC" Type="nvarchar" MaxLength="100" />
+          <Property Name="STATUS" Type="char" MaxLength="1" />
+          <Property Name="PRINT_NB" Type="binary" MaxLength="50" />
+          <Property Name="VER_N" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="UID_USES" Type="int" Nullable="false" />
+          <Property Name="CREADATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="UPDADATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="DELIVERYORDERDATE" Type="smalldatetime" />
+          <Property Name="DELIVERYORDERNUMBER" Type="varchar" MaxLength="15" />
+          <Property Name="Payment" Type="int" />
+          <Property Name="RecepitNoOperator" Type="nvarchar" MaxLength="150" />
+          <Property Name="RecepitNoPort" Type="nvarchar" MaxLength="150" />
+          <Property Name="RecepitDateOperator" Type="smalldatetime" />
+          <Property Name="RecepitDatePort" Type="smalldatetime" />
+          <Property Name="PermitForPrintReplica" Type="binary" MaxLength="50" />
+          <Property Name="Print_GUID" Type="uniqueidentifier" />
+          <Property Name="PRINT_NB_Replica" Type="binary" MaxLength="50" />
+          <Property Name="Print_ReplicaGUID" Type="uniqueidentifier" />
+          <Property Name="PaymentOP" Type="int" />
+          <Property Name="CONSIGNEEID" Type="int" />
+        </EntityType>
+        <EntityType Name="VESSELS">
+          <Key>
+            <PropertyRef Name="VESSELID" />
+          </Key>
+          <Property Name="VESSELID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LLOYD" Type="char" MaxLength="7" />
+          <Property Name="SHIPNAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="FORMERNAME" Type="nvarchar" MaxLength="30" />
+          <Property Name="CALLSIGN" Type="char" MaxLength="7" />
+          <Property Name="PORTLLOYID" Type="int" />
+          <Property Name="SHIPOWNERID" Type="int" />
+          <Property Name="FLAGID" Type="int" />
+          <Property Name="VESSELTYPEID" Type="int" />
+          <Property Name="YEARBUILT" Type="int" />
+          <Property Name="LOA" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="BEAM" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="DRAFT" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="GRT" Type="int" />
+          <Property Name="NRT" Type="int" />
+          <Property Name="DWT" Type="int" />
+          <Property Name="HOLDNB" Type="smallint" />
+          <Property Name="TANKNB" Type="smallint" />
+          <Property Name="TEUCAPA" Type="int" />
+          <Property Name="LINEARCAPA" Type="int" />
+          <Property Name="REGISTERNB" Type="char" MaxLength="50" />
+          <Property Name="UID_USES" Type="int" Nullable="false" />
+          <Property Name="VER_N" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CREADATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="UPDADATE" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BL_HEAD_MANIFEST">
+          <End Role="MANIFEST" Type="Self.MANIFEST" Multiplicity="1" />
+          <End Role="BL_HEAD" Type="Self.BL_HEAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANIFEST">
+              <PropertyRef Name="MANIFESTID" />
+            </Principal>
+            <Dependent Role="BL_HEAD">
+              <PropertyRef Name="MANIFESTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BL_ITEM_BL_HEAD">
+          <End Role="BL_HEAD" Type="Self.BL_HEAD" Multiplicity="1" />
+          <End Role="BL_ITEM" Type="Self.BL_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BL_HEAD">
+              <PropertyRef Name="BL_HEADID" />
+            </Principal>
+            <Dependent Role="BL_ITEM">
+              <PropertyRef Name="BL_HEADID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOOKING_VESSELS">
+          <End Role="VESSELS" Type="Self.VESSELS" Multiplicity="1" />
+          <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VESSELS">
+              <PropertyRef Name="VESSELID" />
+            </Principal>
+            <Dependent Role="BOOKING">
+              <PropertyRef Name="VESSELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MANIFEST_BOOKING">
+          <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="1" />
+          <End Role="MANIFEST" Type="Self.MANIFEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOOKING">
+              <PropertyRef Name="BOOKINGID" />
+            </Principal>
+            <Dependent Role="MANIFEST">
+              <PropertyRef Name="BOOKINGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GCOMSStoreContainer">
+          <EntitySet Name="BL_HEAD" EntityType="Self.BL_HEAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BL_ITEM" EntityType="Self.BL_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BOOKING" EntityType="Self.BOOKING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MANIFEST" EntityType="Self.MANIFEST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SH_AGENT" EntityType="Self.SH_AGENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STORREBL" EntityType="Self.STORREBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VESSELS" EntityType="Self.VESSELS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BL_HEAD_MANIFEST" Association="Self.FK_BL_HEAD_MANIFEST">
+            <End Role="MANIFEST" EntitySet="MANIFEST" />
+            <End Role="BL_HEAD" EntitySet="BL_HEAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BL_ITEM_BL_HEAD" Association="Self.FK_BL_ITEM_BL_HEAD">
+            <End Role="BL_HEAD" EntitySet="BL_HEAD" />
+            <End Role="BL_ITEM" EntitySet="BL_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOOKING_VESSELS" Association="Self.FK_BOOKING_VESSELS">
+            <End Role="VESSELS" EntitySet="VESSELS" />
+            <End Role="BOOKING" EntitySet="BOOKING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MANIFEST_BOOKING" Association="Self.FK_MANIFEST_BOOKING">
+            <End Role="BOOKING" EntitySet="BOOKING" />
+            <End Role="MANIFEST" EntitySet="MANIFEST" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GCOMS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BOOKING">
+          <Key>
+            <PropertyRef Name="BOOKINGID" />
+          </Key>
+          <Property Name="BOOKINGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOOKING1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="VESSELID" Type="Int32" Nullable="false" />
+          <Property Name="BOOKINGTYP" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SUBM_DATE" Type="DateTime" Precision="0" />
+          <Property Name="SHIPAGENTID" Type="Int32" />
+          <Property Name="CHARTAGENTID" Type="Int32" />
+          <Property Name="SH_LINEID" Type="Int32" />
+          <Property Name="ETA_DATE" Type="DateTime" Precision="0" />
+          <Property Name="ETD_DATE" Type="DateTime" Precision="0" />
+          <Property Name="DRAFT_IN" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="DRAFT_OUT" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="NEXT_PORTID" Type="Int32" />
+          <Property Name="LAST_PORTID" Type="Int32" />
+          <Property Name="COMMODITYID" Type="Int32" />
+          <Property Name="D_LIQBULK" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_LIQBULK" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_DRYBULK" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_DRYBULK" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_GALCARGO" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_GALCARGO" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_20NB_E" Type="Int16" />
+          <Property Name="D_20NB_F" Type="Int16" />
+          <Property Name="L_20NB_E" Type="Int16" />
+          <Property Name="L_20NB_F" Type="Int16" />
+          <Property Name="D_20TN_E" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_20TN_F" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_20TN_E" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_20TN_F" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_40NB_E" Type="Int16" />
+          <Property Name="D_40NB_F" Type="Int16" />
+          <Property Name="L_40NB_E" Type="Int16" />
+          <Property Name="L_40NB_F" Type="Int16" />
+          <Property Name="D_40TN_E" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_40TN_F" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_40TN_E" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_40TN_F" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_VEHNB" Type="Int16" />
+          <Property Name="L_VEHNB" Type="Int16" />
+          <Property Name="D_VEHTN" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_VEHTN" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_LIVNB" Type="Int16" />
+          <Property Name="L_LIVNB" Type="Int16" />
+          <Property Name="D_LIVTN" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_LIVTN" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_HVLNB" Type="Int16" />
+          <Property Name="L_HVLNB" Type="Int16" />
+          <Property Name="D_HVLMAXTN" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="L_HVLMAXTN" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="D_GANGS" Type="Int16" />
+          <Property Name="L_GANGS" Type="Int16" />
+          <Property Name="D_HOOKS" Type="Int16" />
+          <Property Name="L_HOOKS" Type="Int16" />
+          <Property Name="CONT_FULL" Type="Boolean" />
+          <Property Name="CONT_GEAR" Type="Boolean" />
+          <Property Name="RORORAMP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RORONEED" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VOYAGE_A" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="VOYAGE_D" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="UID_USES" Type="Int32" Nullable="false" />
+          <Property Name="VER_N" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CREADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CARGO_TYPEID" Type="Int32" />
+          <Property Name="HANDLING_DIRECT" Type="Boolean" />
+          <Property Name="HANDLING_INDIRECT" Type="Boolean" />
+          <Property Name="ISSC_DATE" Type="DateTime" Precision="0" />
+          <Property Name="ISSC_NB" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ARVTYPEID" Type="Int32" />
+          <Property Name="ONECARGOCONSIGNEE" Type="Boolean" />
+          <Property Name="CONSIGNEEID" Type="Int32" />
+          <Property Name="CONTDISCHARGEID" Type="Int32" />
+          <Property Name="CONTTALLYID" Type="Int32" />
+          <Property Name="PORTLOCAID" Type="Int32" />
+          <Property Name="BERTHSIDEID" Type="Int32" />
+          <Property Name="CONTDRAFTSURVEYID" Type="Int32" />
+          <Property Name="TALLYID" Type="Int32" />
+          <Property Name="VESSEL2ID" Type="Int32" />
+          <NavigationProperty Name="VESSELS" Relationship="GCOMS.FK_BOOKING_VESSELS" FromRole="BOOKING" ToRole="VESSELS" />
+          <NavigationProperty Name="SHIPAGENT" Relationship="GCOMS.BOOKING_SH_AGENT" FromRole="BOOKING" ToRole="SH_AGENT" />
+          <NavigationProperty Name="MANIFEST" Relationship="GCOMS.FK_MANIFEST_BOOKING" FromRole="BOOKING" ToRole="MANIFEST" />
+        </EntityType>
+        <EntityContainer Name="GCOMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BOOKING" EntityType="Self.BOOKING" />
+          <EntitySet Name="SH_AGENT" EntityType="GCOMS.SH_AGENT" />
+          <EntitySet Name="VESSELS" EntityType="GCOMS.VESSELS" />
+          <AssociationSet Name="FK_BOOKING_VESSELS" Association="GCOMS.FK_BOOKING_VESSELS">
+            <End Role="VESSELS" EntitySet="VESSELS" />
+            <End Role="BOOKING" EntitySet="BOOKING" />
+          </AssociationSet>
+          <AssociationSet Name="BOOKING_SH_AGENT" Association="GCOMS.BOOKING_SH_AGENT">
+            <End Role="BOOKING" EntitySet="BOOKING" />
+            <End Role="SH_AGENT" EntitySet="SH_AGENT" />
+          </AssociationSet>
+          <EntitySet Name="STORREBL" EntityType="GCOMS.STORREBL" />
+          <EntitySet Name="BL_HEAD" EntityType="GCOMS.BL_HEAD" />
+          <EntitySet Name="MANIFEST" EntityType="GCOMS.MANIFEST" />
+          <AssociationSet Name="FK_BL_HEAD_MANIFEST" Association="GCOMS.FK_BL_HEAD_MANIFEST">
+            <End Role="MANIFEST" EntitySet="MANIFEST" />
+            <End Role="BL_HEAD" EntitySet="BL_HEAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MANIFEST_BOOKING" Association="GCOMS.FK_MANIFEST_BOOKING">
+            <End Role="BOOKING" EntitySet="BOOKING" />
+            <End Role="MANIFEST" EntitySet="MANIFEST" />
+          </AssociationSet>
+          <EntitySet Name="BL_ITEM" EntityType="GCOMS.BL_ITEM" />
+          <AssociationSet Name="FK_BL_ITEM_BL_HEAD" Association="GCOMS.FK_BL_ITEM_BL_HEAD">
+            <End Role="BL_HEAD" EntitySet="BL_HEAD" />
+            <End Role="BL_ITEM" EntitySet="BL_ITEM" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SH_AGENT">
+          <Key>
+            <PropertyRef Name="SHIPAGENTID" />
+          </Key>
+          <Property Name="SHIPAGENTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SHIPAGENT" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="LONGNAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="EXPIRYDATE" Type="DateTime" Precision="0" />
+          <Property Name="UID_USES" Type="Int32" Nullable="false" />
+          <Property Name="VER_N" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CREADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="BOOKING" Relationship="GCOMS.BOOKING_SH_AGENT" FromRole="SH_AGENT" ToRole="BOOKING" />
+        </EntityType>
+        <EntityType Name="VESSELS">
+          <Key>
+            <PropertyRef Name="VESSELID" />
+          </Key>
+          <Property Name="VESSELID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LLOYD" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="SHIPNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FORMERNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CALLSIGN" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="PORTLLOYID" Type="Int32" />
+          <Property Name="SHIPOWNERID" Type="Int32" />
+          <Property Name="FLAGID" Type="Int32" />
+          <Property Name="VESSELTYPEID" Type="Int32" />
+          <Property Name="YEARBUILT" Type="Int32" />
+          <Property Name="LOA" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="BEAM" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="DRAFT" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="GRT" Type="Int32" />
+          <Property Name="NRT" Type="Int32" />
+          <Property Name="DWT" Type="Int32" />
+          <Property Name="HOLDNB" Type="Int16" />
+          <Property Name="TANKNB" Type="Int16" />
+          <Property Name="TEUCAPA" Type="Int32" />
+          <Property Name="LINEARCAPA" Type="Int32" />
+          <Property Name="REGISTERNB" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="UID_USES" Type="Int32" Nullable="false" />
+          <Property Name="VER_N" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CREADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="BOOKING" Relationship="GCOMS.FK_BOOKING_VESSELS" FromRole="VESSELS" ToRole="BOOKING" />
+        </EntityType>
+        <Association Name="FK_BOOKING_VESSELS">
+          <End Type="GCOMS.VESSELS" Role="VESSELS" Multiplicity="1" />
+          <End Type="GCOMS.BOOKING" Role="BOOKING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VESSELS">
+              <PropertyRef Name="VESSELID" />
+            </Principal>
+            <Dependent Role="BOOKING">
+              <PropertyRef Name="VESSELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BOOKING_SH_AGENT">
+          <End Type="GCOMS.BOOKING" Role="BOOKING" Multiplicity="*" />
+          <End Type="GCOMS.SH_AGENT" Role="SH_AGENT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SH_AGENT">
+              <PropertyRef Name="SHIPAGENTID" />
+            </Principal>
+            <Dependent Role="BOOKING">
+              <PropertyRef Name="SHIPAGENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="STORREBL">
+          <Key>
+            <PropertyRef Name="STORREBLID" />
+          </Key>
+          <Property Name="STORREBLID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STORREBL_HeadID" Type="Int32" />
+          <Property Name="BL_ITEMID" Type="Int32" />
+          <Property Name="ISSUE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="SERIAL" Type="String" MaxLength="17" FixedLength="true" Unicode="false" />
+          <Property Name="DISCHARGE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="PACK_NB" Type="Int32" />
+          <Property Name="GRS_WEIGHT" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="LCNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ISSUEING_BANK" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="COMMENTS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CLEARER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRERSTORBL_ID" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="BUYER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALEDESC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PRINT_NB" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="VER_N" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="UID_USES" Type="Int32" Nullable="false" />
+          <Property Name="CREADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DELIVERYORDERDATE" Type="DateTime" Precision="0" />
+          <Property Name="DELIVERYORDERNUMBER" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Payment" Type="Int32" />
+          <Property Name="RecepitNoOperator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="RecepitNoPort" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="RecepitDateOperator" Type="DateTime" Precision="0" />
+          <Property Name="RecepitDatePort" Type="DateTime" Precision="0" />
+          <Property Name="PermitForPrintReplica" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="Print_GUID" Type="Guid" />
+          <Property Name="PRINT_NB_Replica" Type="Binary" MaxLength="50" FixedLength="true" />
+          <Property Name="Print_ReplicaGUID" Type="Guid" />
+          <Property Name="PaymentOP" Type="Int32" />
+          <Property Name="CONSIGNEEID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BL_HEAD">
+          <Key>
+            <PropertyRef Name="BL_HEADID" />
+          </Key>
+          <Property Name="BL_HEADID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MANIFESTID" Type="Int32" Nullable="false" />
+          <Property Name="BL_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TRAFFICID" Type="Int32" />
+          <Property Name="BL_CONT" Type="Boolean" />
+          <Property Name="BL_TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CSGNEE_NAM" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CSGNEE_ADD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CSGNEE_POSTALCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CSGNEE_CITY" Type="Int32" />
+          <Property Name="CSGNEE_FAX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CSGNEE_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CSGNOR_NAM" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CSGNOR_ADD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CSGNOR_POSTALCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CSGNOR_CITY" Type="Int32" />
+          <Property Name="CSGNOR_FAX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CSGNOR_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NOTIFY_NAM" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NOTIFY_ADD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NOTIFY_POSTALCODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NOTIFY_CITY" Type="Int32" />
+          <Property Name="NOTIFY_FAX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NOTIFY_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CONSIGNEEID" Type="Int32" />
+          <Property Name="PL_LOADING" Type="Int32" />
+          <Property Name="PL_DISCHAR" Type="Int32" />
+          <Property Name="PL_DESTINA" Type="Int32" />
+          <Property Name="GOODS_ORIG" Type="Int32" />
+          <Property Name="FORWARDERID" Type="Int32" />
+          <Property Name="CLEARERID" Type="Int32" />
+          <Property Name="OPERATORID" Type="Int32" />
+          <Property Name="TERMINALID" Type="Int32" />
+          <Property Name="STOP_STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="STOP_DATE" Type="DateTime" Precision="0" />
+          <Property Name="STOP_USERID" Type="Int32" />
+          <Property Name="STOP_MOTIVEID" Type="Int32" />
+          <Property Name="STOP_COMMENTS" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DISCHARGED" Type="DateTime" Precision="0" />
+          <Property Name="CREADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UID_USES" Type="Int32" Nullable="false" />
+          <Property Name="VER_N" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FREE_ZONE" Type="Boolean" />
+          <NavigationProperty Name="MANIFEST" Relationship="GCOMS.FK_BL_HEAD_MANIFEST" FromRole="BL_HEAD" ToRole="MANIFEST" />
+          <NavigationProperty Name="BL_ITEM" Relationship="GCOMS.FK_BL_ITEM_BL_HEAD" FromRole="BL_HEAD" ToRole="BL_ITEM" />
+        </EntityType>
+        <EntityType Name="MANIFEST">
+          <Key>
+            <PropertyRef Name="MANIFESTID" />
+          </Key>
+          <Property Name="MANIFESTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOOKINGID" Type="Int32" Nullable="false" />
+          <Property Name="SH_LINEID" Type="Int32" Nullable="false" />
+          <Property Name="MAN_STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CREADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UID_USES" Type="Int32" Nullable="false" />
+          <Property Name="VER_N" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="UPDADATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="BL_HEAD" Relationship="GCOMS.FK_BL_HEAD_MANIFEST" FromRole="MANIFEST" ToRole="BL_HEAD" />
+          <NavigationProperty Name="BOOKING" Relationship="GCOMS.FK_MANIFEST_BOOKING" FromRole="MANIFEST" ToRole="BOOKING" />
+        </EntityType>
+        <Association Name="FK_BL_HEAD_MANIFEST">
+          <End Type="GCOMS.MANIFEST" Role="MANIFEST" Multiplicity="1" />
+          <End Type="GCOMS.BL_HEAD" Role="BL_HEAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANIFEST">
+              <PropertyRef Name="MANIFESTID" />
+            </Principal>
+            <Dependent Role="BL_HEAD">
+              <PropertyRef Name="MANIFESTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MANIFEST_BOOKING">
+          <End Type="GCOMS.BOOKING" Role="BOOKING" Multiplicity="1" />
+          <End Type="GCOMS.MANIFEST" Role="MANIFEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BOOKING">
+              <PropertyRef Name="BOOKINGID" />
+            </Principal>
+            <Dependent Role="MANIFEST">
+              <PropertyRef Name="BOOKINGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BL_ITEM">
+          <Key>
+            <PropertyRef Name="BL_ITEMID" />
+          </Key>
+          <Property Name="BL_ITEMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BL_HEADID" Type="Int32" Nullable="false" />
+          <Property Name="ITEM_NB" Type="Int32" Nullable="false" />
+          <Property Name="CUSTOMCLRNB" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="CUSTOM_HEADID" Type="Int32" />
+          <Property Name="CUSTOM_ITEMID" Type="Int32" />
+          <Property Name="GOODS_DESC" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <Property Name="NET_WEIGHT" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="GRS_WEIGHT" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="VOLUME" Type="Int32" />
+          <Property Name="PACK_CODEID" Type="Int32" />
+          <Property Name="PACK_NB" Type="Int32" />
+          <Property Name="COMMODITYID" Type="Int32" />
+          <Property Name="DG_CLASSID" Type="Int32" />
+          <Property Name="CARGO_TYPEID" Type="Int32" />
+          <Property Name="SHIP_MK" Type="String" MaxLength="175" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMCLRDATE" Type="DateTime" Precision="0" />
+          <Property Name="CUSTOMNB" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="SERIALNB" Type="Int32" />
+          <Property Name="FREE_ZONE" Type="Boolean" />
+          <Property Name="UNDG_CODE" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="UID_USES" Type="Int32" />
+          <Property Name="VER_N" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CREADATE" Type="DateTime" Precision="0" />
+          <Property Name="UPDADATE" Type="DateTime" Precision="0" />
+          <Property Name="Tag" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="flag" Type="Int32" />
+          <Property Name="Date_Stop" Type="DateTime" Precision="0" />
+          <Property Name="Desc_Stop" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BL_HEAD" Relationship="GCOMS.FK_BL_ITEM_BL_HEAD" FromRole="BL_ITEM" ToRole="BL_HEAD" />
+        </EntityType>
+        <Association Name="FK_BL_ITEM_BL_HEAD">
+          <End Type="GCOMS.BL_HEAD" Role="BL_HEAD" Multiplicity="1" />
+          <End Type="GCOMS.BL_ITEM" Role="BL_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BL_HEAD">
+              <PropertyRef Name="BL_HEADID" />
+            </Principal>
+            <Dependent Role="BL_ITEM">
+              <PropertyRef Name="BL_HEADID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GCOMSStoreContainer" CdmEntityContainer="GCOMSEntities">
+          <EntitySetMapping Name="BOOKING">
+            <EntityTypeMapping TypeName="GCOMS.BOOKING">
+              <MappingFragment StoreEntitySet="BOOKING">
+                <ScalarProperty Name="BOOKINGID" ColumnName="BOOKINGID" />
+                <ScalarProperty Name="BOOKING1" ColumnName="BOOKING" />
+                <ScalarProperty Name="VESSELID" ColumnName="VESSELID" />
+                <ScalarProperty Name="BOOKINGTYP" ColumnName="BOOKINGTYP" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="SUBM_DATE" ColumnName="SUBM_DATE" />
+                <ScalarProperty Name="SHIPAGENTID" ColumnName="SHIPAGENTID" />
+                <ScalarProperty Name="CHARTAGENTID" ColumnName="CHARTAGENTID" />
+                <ScalarProperty Name="SH_LINEID" ColumnName="SH_LINEID" />
+                <ScalarProperty Name="ETA_DATE" ColumnName="ETA_DATE" />
+                <ScalarProperty Name="ETD_DATE" ColumnName="ETD_DATE" />
+                <ScalarProperty Name="DRAFT_IN" ColumnName="DRAFT_IN" />
+                <ScalarProperty Name="DRAFT_OUT" ColumnName="DRAFT_OUT" />
+                <ScalarProperty Name="NEXT_PORTID" ColumnName="NEXT_PORTID" />
+                <ScalarProperty Name="LAST_PORTID" ColumnName="LAST_PORTID" />
+                <ScalarProperty Name="COMMODITYID" ColumnName="COMMODITYID" />
+                <ScalarProperty Name="D_LIQBULK" ColumnName="D_LIQBULK" />
+                <ScalarProperty Name="L_LIQBULK" ColumnName="L_LIQBULK" />
+                <ScalarProperty Name="D_DRYBULK" ColumnName="D_DRYBULK" />
+                <ScalarProperty Name="L_DRYBULK" ColumnName="L_DRYBULK" />
+                <ScalarProperty Name="D_GALCARGO" ColumnName="D_GALCARGO" />
+                <ScalarProperty Name="L_GALCARGO" ColumnName="L_GALCARGO" />
+                <ScalarProperty Name="D_20NB_E" ColumnName="D_20NB_E" />
+                <ScalarProperty Name="D_20NB_F" ColumnName="D_20NB_F" />
+                <ScalarProperty Name="L_20NB_E" ColumnName="L_20NB_E" />
+                <ScalarProperty Name="L_20NB_F" ColumnName="L_20NB_F" />
+                <ScalarProperty Name="D_20TN_E" ColumnName="D_20TN_E" />
+                <ScalarProperty Name="D_20TN_F" ColumnName="D_20TN_F" />
+                <ScalarProperty Name="L_20TN_E" ColumnName="L_20TN_E" />
+                <ScalarProperty Name="L_20TN_F" ColumnName="L_20TN_F" />
+                <ScalarProperty Name="D_40NB_E" ColumnName="D_40NB_E" />
+                <ScalarProperty Name="D_40NB_F" ColumnName="D_40NB_F" />
+                <ScalarProperty Name="L_40NB_E" ColumnName="L_40NB_E" />
+                <ScalarProperty Name="L_40NB_F" ColumnName="L_40NB_F" />
+                <ScalarProperty Name="D_40TN_E" ColumnName="D_40TN_E" />
+                <ScalarProperty Name="D_40TN_F" ColumnName="D_40TN_F" />
+                <ScalarProperty Name="L_40TN_E" ColumnName="L_40TN_E" />
+                <ScalarProperty Name="L_40TN_F" ColumnName="L_40TN_F" />
+                <ScalarProperty Name="D_VEHNB" ColumnName="D_VEHNB" />
+                <ScalarProperty Name="L_VEHNB" ColumnName="L_VEHNB" />
+                <ScalarProperty Name="D_VEHTN" ColumnName="D_VEHTN" />
+                <ScalarProperty Name="L_VEHTN" ColumnName="L_VEHTN" />
+                <ScalarProperty Name="D_LIVNB" ColumnName="D_LIVNB" />
+                <ScalarProperty Name="L_LIVNB" ColumnName="L_LIVNB" />
+                <ScalarProperty Name="D_LIVTN" ColumnName="D_LIVTN" />
+                <ScalarProperty Name="L_LIVTN" ColumnName="L_LIVTN" />
+                <ScalarProperty Name="D_HVLNB" ColumnName="D_HVLNB" />
+                <ScalarProperty Name="L_HVLNB" ColumnName="L_HVLNB" />
+                <ScalarProperty Name="D_HVLMAXTN" ColumnName="D_HVLMAXTN" />
+                <ScalarProperty Name="L_HVLMAXTN" ColumnName="L_HVLMAXTN" />
+                <ScalarProperty Name="D_GANGS" ColumnName="D_GANGS" />
+                <ScalarProperty Name="L_GANGS" ColumnName="L_GANGS" />
+                <ScalarProperty Name="D_HOOKS" ColumnName="D_HOOKS" />
+                <ScalarProperty Name="L_HOOKS" ColumnName="L_HOOKS" />
+                <ScalarProperty Name="CONT_FULL" ColumnName="CONT_FULL" />
+                <ScalarProperty Name="CONT_GEAR" ColumnName="CONT_GEAR" />
+                <ScalarProperty Name="RORORAMP" ColumnName="RORORAMP" />
+                <ScalarProperty Name="RORONEED" ColumnName="RORONEED" />
+                <ScalarProperty Name="VOYAGE_A" ColumnName="VOYAGE_A" />
+                <ScalarProperty Name="VOYAGE_D" ColumnName="VOYAGE_D" />
+                <ScalarProperty Name="UID_USES" ColumnName="UID_USES" />
+                <ScalarProperty Name="VER_N" ColumnName="VER_N" />
+                <ScalarProperty Name="CREADATE" ColumnName="CREADATE" />
+                <ScalarProperty Name="UPDADATE" ColumnName="UPDADATE" />
+                <ScalarProperty Name="CARGO_TYPEID" ColumnName="CARGO_TYPEID" />
+                <ScalarProperty Name="HANDLING_DIRECT" ColumnName="HANDLING_DIRECT" />
+                <ScalarProperty Name="HANDLING_INDIRECT" ColumnName="HANDLING_INDIRECT" />
+                <ScalarProperty Name="ISSC_DATE" ColumnName="ISSC_DATE" />
+                <ScalarProperty Name="ISSC_NB" ColumnName="ISSC_NB" />
+                <ScalarProperty Name="ARVTYPEID" ColumnName="ARVTYPEID" />
+                <ScalarProperty Name="ONECARGOCONSIGNEE" ColumnName="ONECARGOCONSIGNEE" />
+                <ScalarProperty Name="CONSIGNEEID" ColumnName="CONSIGNEEID" />
+                <ScalarProperty Name="CONTDISCHARGEID" ColumnName="CONTDISCHARGEID" />
+                <ScalarProperty Name="CONTTALLYID" ColumnName="CONTTALLYID" />
+                <ScalarProperty Name="PORTLOCAID" ColumnName="PORTLOCAID" />
+                <ScalarProperty Name="BERTHSIDEID" ColumnName="BERTHSIDEID" />
+                <ScalarProperty Name="CONTDRAFTSURVEYID" ColumnName="CONTDRAFTSURVEYID" />
+                <ScalarProperty Name="TALLYID" ColumnName="TALLYID" />
+                <ScalarProperty Name="VESSEL2ID" ColumnName="VESSEL2ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SH_AGENT">
+            <EntityTypeMapping TypeName="GCOMS.SH_AGENT">
+              <MappingFragment StoreEntitySet="SH_AGENT">
+                <ScalarProperty Name="UPDADATE" ColumnName="UPDADATE" />
+                <ScalarProperty Name="CREADATE" ColumnName="CREADATE" />
+                <ScalarProperty Name="VER_N" ColumnName="VER_N" />
+                <ScalarProperty Name="UID_USES" ColumnName="UID_USES" />
+                <ScalarProperty Name="EXPIRYDATE" ColumnName="EXPIRYDATE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="LONGNAME" ColumnName="LONGNAME" />
+                <ScalarProperty Name="SHIPAGENT" ColumnName="SHIPAGENT" />
+                <ScalarProperty Name="SHIPAGENTID" ColumnName="SHIPAGENTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VESSELS">
+            <EntityTypeMapping TypeName="GCOMS.VESSELS">
+              <MappingFragment StoreEntitySet="VESSELS">
+                <ScalarProperty Name="UPDADATE" ColumnName="UPDADATE" />
+                <ScalarProperty Name="CREADATE" ColumnName="CREADATE" />
+                <ScalarProperty Name="VER_N" ColumnName="VER_N" />
+                <ScalarProperty Name="UID_USES" ColumnName="UID_USES" />
+                <ScalarProperty Name="REGISTERNB" ColumnName="REGISTERNB" />
+                <ScalarProperty Name="LINEARCAPA" ColumnName="LINEARCAPA" />
+                <ScalarProperty Name="TEUCAPA" ColumnName="TEUCAPA" />
+                <ScalarProperty Name="TANKNB" ColumnName="TANKNB" />
+                <ScalarProperty Name="HOLDNB" ColumnName="HOLDNB" />
+                <ScalarProperty Name="DWT" ColumnName="DWT" />
+                <ScalarProperty Name="NRT" ColumnName="NRT" />
+                <ScalarProperty Name="GRT" ColumnName="GRT" />
+                <ScalarProperty Name="DRAFT" ColumnName="DRAFT" />
+                <ScalarProperty Name="BEAM" ColumnName="BEAM" />
+                <ScalarProperty Name="LOA" ColumnName="LOA" />
+                <ScalarProperty Name="YEARBUILT" ColumnName="YEARBUILT" />
+                <ScalarProperty Name="VESSELTYPEID" ColumnName="VESSELTYPEID" />
+                <ScalarProperty Name="FLAGID" ColumnName="FLAGID" />
+                <ScalarProperty Name="SHIPOWNERID" ColumnName="SHIPOWNERID" />
+                <ScalarProperty Name="PORTLLOYID" ColumnName="PORTLLOYID" />
+                <ScalarProperty Name="CALLSIGN" ColumnName="CALLSIGN" />
+                <ScalarProperty Name="FORMERNAME" ColumnName="FORMERNAME" />
+                <ScalarProperty Name="SHIPNAME" ColumnName="SHIPNAME" />
+                <ScalarProperty Name="LLOYD" ColumnName="LLOYD" />
+                <ScalarProperty Name="VESSELID" ColumnName="VESSELID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STORREBL">
+            <EntityTypeMapping TypeName="GCOMS.STORREBL">
+              <MappingFragment StoreEntitySet="STORREBL">
+                <ScalarProperty Name="CONSIGNEEID" ColumnName="CONSIGNEEID" />
+                <ScalarProperty Name="PaymentOP" ColumnName="PaymentOP" />
+                <ScalarProperty Name="Print_ReplicaGUID" ColumnName="Print_ReplicaGUID" />
+                <ScalarProperty Name="PRINT_NB_Replica" ColumnName="PRINT_NB_Replica" />
+                <ScalarProperty Name="Print_GUID" ColumnName="Print_GUID" />
+                <ScalarProperty Name="PermitForPrintReplica" ColumnName="PermitForPrintReplica" />
+                <ScalarProperty Name="RecepitDatePort" ColumnName="RecepitDatePort" />
+                <ScalarProperty Name="RecepitDateOperator" ColumnName="RecepitDateOperator" />
+                <ScalarProperty Name="RecepitNoPort" ColumnName="RecepitNoPort" />
+                <ScalarProperty Name="RecepitNoOperator" ColumnName="RecepitNoOperator" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="DELIVERYORDERNUMBER" ColumnName="DELIVERYORDERNUMBER" />
+                <ScalarProperty Name="DELIVERYORDERDATE" ColumnName="DELIVERYORDERDATE" />
+                <ScalarProperty Name="UPDADATE" ColumnName="UPDADATE" />
+                <ScalarProperty Name="CREADATE" ColumnName="CREADATE" />
+                <ScalarProperty Name="UID_USES" ColumnName="UID_USES" />
+                <ScalarProperty Name="VER_N" ColumnName="VER_N" />
+                <ScalarProperty Name="PRINT_NB" ColumnName="PRINT_NB" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="SALEDESC" ColumnName="SALEDESC" />
+                <ScalarProperty Name="BUYER_NAME" ColumnName="BUYER_NAME" />
+                <ScalarProperty Name="PRERSTORBL_ID" ColumnName="PRERSTORBL_ID" />
+                <ScalarProperty Name="CLEARER" ColumnName="CLEARER" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="ISSUEING_BANK" ColumnName="ISSUEING_BANK" />
+                <ScalarProperty Name="LCNO" ColumnName="LCNO" />
+                <ScalarProperty Name="GRS_WEIGHT" ColumnName="GRS_WEIGHT" />
+                <ScalarProperty Name="PACK_NB" ColumnName="PACK_NB" />
+                <ScalarProperty Name="DISCHARGE_DATE" ColumnName="DISCHARGE_DATE" />
+                <ScalarProperty Name="SERIAL" ColumnName="SERIAL" />
+                <ScalarProperty Name="ISSUE_DATE" ColumnName="ISSUE_DATE" />
+                <ScalarProperty Name="BL_ITEMID" ColumnName="BL_ITEMID" />
+                <ScalarProperty Name="STORREBL_HeadID" ColumnName="STORREBL_HeadID" />
+                <ScalarProperty Name="STORREBLID" ColumnName="STORREBLID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BL_HEAD">
+            <EntityTypeMapping TypeName="GCOMS.BL_HEAD">
+              <MappingFragment StoreEntitySet="BL_HEAD">
+                <ScalarProperty Name="FREE_ZONE" ColumnName="FREE_ZONE" />
+                <ScalarProperty Name="VER_N" ColumnName="VER_N" />
+                <ScalarProperty Name="UID_USES" ColumnName="UID_USES" />
+                <ScalarProperty Name="UPDADATE" ColumnName="UPDADATE" />
+                <ScalarProperty Name="CREADATE" ColumnName="CREADATE" />
+                <ScalarProperty Name="DISCHARGED" ColumnName="DISCHARGED" />
+                <ScalarProperty Name="STOP_COMMENTS" ColumnName="STOP_COMMENTS" />
+                <ScalarProperty Name="STOP_MOTIVEID" ColumnName="STOP_MOTIVEID" />
+                <ScalarProperty Name="STOP_USERID" ColumnName="STOP_USERID" />
+                <ScalarProperty Name="STOP_DATE" ColumnName="STOP_DATE" />
+                <ScalarProperty Name="STOP_STATUS" ColumnName="STOP_STATUS" />
+                <ScalarProperty Name="TERMINALID" ColumnName="TERMINALID" />
+                <ScalarProperty Name="OPERATORID" ColumnName="OPERATORID" />
+                <ScalarProperty Name="CLEARERID" ColumnName="CLEARERID" />
+                <ScalarProperty Name="FORWARDERID" ColumnName="FORWARDERID" />
+                <ScalarProperty Name="GOODS_ORIG" ColumnName="GOODS_ORIG" />
+                <ScalarProperty Name="PL_DESTINA" ColumnName="PL_DESTINA" />
+                <ScalarProperty Name="PL_DISCHAR" ColumnName="PL_DISCHAR" />
+                <ScalarProperty Name="PL_LOADING" ColumnName="PL_LOADING" />
+                <ScalarProperty Name="CONSIGNEEID" ColumnName="CONSIGNEEID" />
+                <ScalarProperty Name="NOTIFY_EMAIL" ColumnName="NOTIFY_EMAIL" />
+                <ScalarProperty Name="NOTIFY_FAX" ColumnName="NOTIFY_FAX" />
+                <ScalarProperty Name="NOTIFY_CITY" ColumnName="NOTIFY_CITY" />
+                <ScalarProperty Name="NOTIFY_POSTALCODE" ColumnName="NOTIFY_POSTALCODE" />
+                <ScalarProperty Name="NOTIFY_ADD" ColumnName="NOTIFY_ADD" />
+                <ScalarProperty Name="NOTIFY_NAM" ColumnName="NOTIFY_NAM" />
+                <ScalarProperty Name="CSGNOR_EMAIL" ColumnName="CSGNOR_EMAIL" />
+                <ScalarProperty Name="CSGNOR_FAX" ColumnName="CSGNOR_FAX" />
+                <ScalarProperty Name="CSGNOR_CITY" ColumnName="CSGNOR_CITY" />
+                <ScalarProperty Name="CSGNOR_POSTALCODE" ColumnName="CSGNOR_POSTALCODE" />
+                <ScalarProperty Name="CSGNOR_ADD" ColumnName="CSGNOR_ADD" />
+                <ScalarProperty Name="CSGNOR_NAM" ColumnName="CSGNOR_NAM" />
+                <ScalarProperty Name="CSGNEE_EMAIL" ColumnName="CSGNEE_EMAIL" />
+                <ScalarProperty Name="CSGNEE_FAX" ColumnName="CSGNEE_FAX" />
+                <ScalarProperty Name="CSGNEE_CITY" ColumnName="CSGNEE_CITY" />
+                <ScalarProperty Name="CSGNEE_POSTALCODE" ColumnName="CSGNEE_POSTALCODE" />
+                <ScalarProperty Name="CSGNEE_ADD" ColumnName="CSGNEE_ADD" />
+                <ScalarProperty Name="CSGNEE_NAM" ColumnName="CSGNEE_NAM" />
+                <ScalarProperty Name="BL_TYPE" ColumnName="BL_TYPE" />
+                <ScalarProperty Name="BL_CONT" ColumnName="BL_CONT" />
+                <ScalarProperty Name="TRAFFICID" ColumnName="TRAFFICID" />
+                <ScalarProperty Name="BL_NUMBER" ColumnName="BL_NUMBER" />
+                <ScalarProperty Name="MANIFESTID" ColumnName="MANIFESTID" />
+                <ScalarProperty Name="BL_HEADID" ColumnName="BL_HEADID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MANIFEST">
+            <EntityTypeMapping TypeName="GCOMS.MANIFEST">
+              <MappingFragment StoreEntitySet="MANIFEST">
+                <ScalarProperty Name="UPDADATE" ColumnName="UPDADATE" />
+                <ScalarProperty Name="VER_N" ColumnName="VER_N" />
+                <ScalarProperty Name="UID_USES" ColumnName="UID_USES" />
+                <ScalarProperty Name="CREADATE" ColumnName="CREADATE" />
+                <ScalarProperty Name="MAN_STATUS" ColumnName="MAN_STATUS" />
+                <ScalarProperty Name="SH_LINEID" ColumnName="SH_LINEID" />
+                <ScalarProperty Name="BOOKINGID" ColumnName="BOOKINGID" />
+                <ScalarProperty Name="MANIFESTID" ColumnName="MANIFESTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BL_ITEM">
+            <EntityTypeMapping TypeName="GCOMS.BL_ITEM">
+              <MappingFragment StoreEntitySet="BL_ITEM">
+                <ScalarProperty Name="Desc_Stop" ColumnName="Desc_Stop" />
+                <ScalarProperty Name="Date_Stop" ColumnName="Date_Stop" />
+                <ScalarProperty Name="flag" ColumnName="flag" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="UPDADATE" ColumnName="UPDADATE" />
+                <ScalarProperty Name="CREADATE" ColumnName="CREADATE" />
+                <ScalarProperty Name="VER_N" ColumnName="VER_N" />
+                <ScalarProperty Name="UID_USES" ColumnName="UID_USES" />
+                <ScalarProperty Name="UNDG_CODE" ColumnName="UNDG_CODE" />
+                <ScalarProperty Name="FREE_ZONE" ColumnName="FREE_ZONE" />
+                <ScalarProperty Name="SERIALNB" ColumnName="SERIALNB" />
+                <ScalarProperty Name="CUSTOMNB" ColumnName="CUSTOMNB" />
+                <ScalarProperty Name="CUSTOMCLRDATE" ColumnName="CUSTOMCLRDATE" />
+                <ScalarProperty Name="SHIP_MK" ColumnName="SHIP_MK" />
+                <ScalarProperty Name="CARGO_TYPEID" ColumnName="CARGO_TYPEID" />
+                <ScalarProperty Name="DG_CLASSID" ColumnName="DG_CLASSID" />
+                <ScalarProperty Name="COMMODITYID" ColumnName="COMMODITYID" />
+                <ScalarProperty Name="PACK_NB" ColumnName="PACK_NB" />
+                <ScalarProperty Name="PACK_CODEID" ColumnName="PACK_CODEID" />
+                <ScalarProperty Name="VOLUME" ColumnName="VOLUME" />
+                <ScalarProperty Name="GRS_WEIGHT" ColumnName="GRS_WEIGHT" />
+                <ScalarProperty Name="NET_WEIGHT" ColumnName="NET_WEIGHT" />
+                <ScalarProperty Name="GOODS_DESC" ColumnName="GOODS_DESC" />
+                <ScalarProperty Name="CUSTOM_ITEMID" ColumnName="CUSTOM_ITEMID" />
+                <ScalarProperty Name="CUSTOM_HEADID" ColumnName="CUSTOM_HEADID" />
+                <ScalarProperty Name="CUSTOMCLRNB" ColumnName="CUSTOMCLRNB" />
+                <ScalarProperty Name="ITEM_NB" ColumnName="ITEM_NB" />
+                <ScalarProperty Name="BL_HEADID" ColumnName="BL_HEADID" />
+                <ScalarProperty Name="BL_ITEMID" ColumnName="BL_ITEMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

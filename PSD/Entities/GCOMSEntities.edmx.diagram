@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe000d2a7efc41aa93140e74dbb632e8" Name="Diagram1" ZoomLevel="42">
+        <EntityTypeShape EntityType="GCOMS.BOOKING" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCOMS.SH_AGENT" Width="1.5" PointX="5.25" PointY="3.25" />
+        <EntityTypeShape EntityType="GCOMS.VESSELS" Width="1.5" PointX="0.75" PointY="7" />
+        <AssociationConnector Association="GCOMS.FK_BOOKING_VESSELS" />
+        <AssociationConnector Association="GCOMS.BOOKING_SH_AGENT" />
+        <EntityTypeShape EntityType="GCOMS.STORREBL" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GCOMS.BL_HEAD" Width="2.5" PointX="8.5" PointY="7" />
+        <EntityTypeShape EntityType="GCOMS.MANIFEST" Width="2.5" PointX="5.25" PointY="10.375" />
+        <AssociationConnector Association="GCOMS.FK_BL_HEAD_MANIFEST" />
+        <AssociationConnector Association="GCOMS.FK_MANIFEST_BOOKING" />
+        <EntityTypeShape EntityType="GCOMS.BL_ITEM" Width="1.5" PointX="11.75" PointY="8.5" />
+        <AssociationConnector Association="GCOMS.FK_BL_ITEM_BL_HEAD" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

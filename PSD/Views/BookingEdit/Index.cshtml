@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "ویرایش بوکینگ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-2">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">شماره بوکینگ</span>
+            <input id="bookingNo" type="text" class="form-control" style="direction:ltr;">
+        </div>
+    </div>
+    <div class="col-lg-1">
+        <button type="button" id="btnSearchBooking" class="btn btn-primary btn-sm">جستجو</button>
+    </div>
+    <div class="col-lg-2">
+        <div id="errMsg"></div>
+    </div>
+    <div id="editSeciton" hidden>
+        <div class="col-lg-1 text-left">ویرایش وضعیت</div>
+        <div class="col-lg-2 text-center">
+            <select id="status">
+                <option value="A">A</option>
+                <option value="C">C</option>
+                <option value="O">O</option>
+            </select>
+        </div>
+        <div class="col-lg-1">
+            <button type="button" id="btnPostChange" class="btn btn-success btn-sm">ثبت</button>
+        </div>
+    </div>
+</div>
+<br />
+
+<table class="table text-right" id="bookingTable">
+    <tr>
+        <th>
+            بوکینگ
+        </th>
+        <th>
+            نمایندگی کشتیرانی
+        </th>
+        <th>
+            شناور
+        </th>
+        <th>
+            تاریخ ثبت
+        </th>
+        <th>
+            وضعیت
+        </th>
+    </tr>
+    <tr id="bookingRow"></tr>
+
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            var finalBookingId = -1;
+
+            $("#btnSearchBooking").on("click", function () {
+                loadBooking();
+            });
+            $("#btnPostChange").on("click", function () {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "http://localhost:13765/api/booking/ChangeStatus/" + finalBookingId + "/" + $("#status option:selected").text(),
+                    success: function () { console.log("status changed successfully"); loadBooking(); },
+                    error: function () { console.log("status change failed"); }
+                });
+            });
+
+            function loadBooking() {
+                var bookingNo = $("#bookingNo").val();
+                $.ajax({
+                    dataType: "json",
+                    url: "/api/Booking/GetBookingByNo/" + bookingNo,
+                    success: function (data) {
+                        var bookingRowContent =
+                        "<td>" + data.Booking + "</td>" +
+                        "<td>" + data.ShipAgent + "</td>" +
+                        "<td>" + data.VesselName + "</td>" +
+                        "<td>" + data.SubDate + "</td>" +
+                        "<td>" + data.Status + "</td>";
+                        //"<td>" + "<select id=\"statusOption\" style=\"width:40px;\"><option value=\"A\">A</option><option value=\"C\">C</option><option value=\"O\">O</option>" + "</td>";
+                        finalBookingId = data.BookingId;
+                        $("#bookingRow").html(bookingRowContent);
+                        $("#status").val(data.Status);
+                        $("#editSeciton").show();
+                        $("#errMsg").html("");
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        if (xhr.status == 404) {
+                            $("#errMsg").html("هیچ بوکینگی با این شماره پیدا نشد");
+                            $("#editSeciton").hide();
+                            $("#bookingRow").html("");
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+}  
